@@ -22,7 +22,11 @@ const Countdown: StorefrontFunctionComponent<CountdownProps> = ({  }) => {
 
   const handles = useCssHandles(CSS_HANDLES)
 
-  const { product: { linkText } } = useProduct()
+  //const { product: { linkText } } = useProduct()
+  const productContext = useProduct()
+  const product = productContext?.product
+  const linkText = product?.linkText
+
   const { data, loading, error } = useQuery(productReleaseDate, {
     variables: {
       slug: linkText
